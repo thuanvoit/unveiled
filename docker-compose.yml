@@ -5,7 +5,7 @@ services:
     restart: always
     environment:
       POSTGRES_USER: admin
-      POSTGRES_PASSWORD: 'fG#1H6Bahuq8CJ>V'
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - "5432:5432"
     volumes:
@@ -21,7 +21,7 @@ services:
       - "9001:9001"
     environment:
       MINIO_ROOT_USER: admin
-      MINIO_ROOT_PASSWORD: 'y,.zt?:>)FPQALtN98Y0u.N:JQ-~q6ZgcP3)T]jC'
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
       MINIO_SERVER_URL: "https://s3-unveiled.vofolio.dev"
       MINIO_BROWSER_REDIRECT_URL: "http://192.168.50.127:9001"
     volumes:
