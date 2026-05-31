@@ -9,7 +9,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - unveiled_db:/var/lib/postgresql/data 
+      - /unveiled-data/unveiled_db:/var/lib/postgresql/data 
 
   # Object Storage: MinIO (S3 Compatible)
   minio:
@@ -25,7 +25,7 @@ services:
       MINIO_SERVER_URL: "https://s3-unveiled.vofolio.dev"
       MINIO_BROWSER_REDIRECT_URL: "http://192.168.50.127:9001"
     volumes:
-      - unveiled_minio_data:/data
+      - /unveiled-data/unveiled_minio_data:/data
     command: server /data --console-address ":9001"
 
 volumes:
