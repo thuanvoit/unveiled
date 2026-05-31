@@ -1,0 +1,29 @@
+services:
+  postgres:
+    container_name: unveiled_db
+    image: postgres:17-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: fG#1H6Bahuq8CJ>V
+    ports:
+      - "5432:5432"
+    volumes:
+      - /unveiled_data/db:/var/lib/postgresql/data 
+
+  # Object Storage: MinIO (S3 Compatible)
+  minio:
+    image: docker pull minio/minio:RELEASE.2025-09-07T16-13-09Z
+    container_name: unveiled_s3
+    restart: always
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: admin
+      MINIO_ROOT_PASSWORD: y,.zt?:>)FPQALtN98Y0u.N:JQ-~q6ZgcP3)T]jC
+      MINIO_SERVER_URL: "https://s3-unveiled.vofolio.dev"
+      MINIO_BROWSER_REDIRECT_URL: "http://192.168.50.127:9001"
+    volumes:
+      - /unveiled_data/minio_data:/data
+    command: server /data --console-address ":9001"
