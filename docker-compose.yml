@@ -27,3 +27,7 @@ services:
     volumes:
       - unveiled_minio_data:/data
     command: server /data --console-address ":9001"
+
+volumes:
+  unveiled_db:
+  unveiled_minio_data:
